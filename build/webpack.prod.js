@@ -10,7 +10,7 @@ const config = require('./config')
 
 exec('rm -rf dist/')
 
-base.entry.vendor = config.vendor
+// base.entry.vendor = config.vendor
 base.output.filename = '[name].[chunkhash:8].js'
 base.stats = { children: false }
 
@@ -36,15 +36,15 @@ base.plugins.push(
 )
 
 base.module.rules.push({
-  test:    /\.elm$/,
-  loader:  'elm-webpack-loader',
+  test: /\.elm$/,
+  loader: 'elm-webpack-loader',
   exclude: [/elm-stuff/, /node_modules/]
 })
 base.module.rules.push({
   test: /\.css$/,
   loader: ExtractTextPlugin.extract({
-    loader: [{ loader: 'css-loader' }, 'postcss-loader'],
-    fallbackLoader: 'style-loader'
+    use: [{ loader: 'css-loader' }, 'postcss-loader'],
+    fallback: 'style-loader'
   })
 })
 

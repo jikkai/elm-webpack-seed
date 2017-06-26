@@ -25,7 +25,11 @@ base.module.rules.push({
 })
 base.module.rules.push({
   test: /\.css$/,
-  loader: 'style-loader!css-loader!postcss-loader'
+  use: [
+    'style-loader',
+    { loader: 'css-loader' },
+    'postcss-loader'
+  ]
 })
 
 module.exports = base
